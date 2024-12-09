@@ -3,7 +3,7 @@
 ### Items included:
 - **Development of the activity using WebFlux**
 - **Retry Scheme using spring-retry** The application is able to retry the invocation of the eron-movies mock in case of failure for each of the pages.
-- **Unit tests** It has unit tests with coverage of 80.2%
+- **Unit tests** It has unit tests with coverage of 88.5%
 - **Docker** The application has a Dockerfile to build the application inside a container
 - **Swagger**
 - **Actuator** Basic configuration of Actuator.
