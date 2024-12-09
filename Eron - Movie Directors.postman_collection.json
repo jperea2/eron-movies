@@ -1,0 +1,189 @@
+{
+	"info": {
+		"_postman_id": "64c914b3-6689-4685-b5a6-74155ef6924f",
+		"name": "ERON - MOVIEDIRECTORS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18839514",
+		"_collection_link": "https://restless-meadow-634381.postman.co/workspace/Ay~7e4e4905-95de-473b-b33c-a723860945e3/collection/18839514-64c914b3-6689-4685-b5a6-74155ef6924f?action=share&source=collection_link&creator=18839514"
+	},
+	"item": [
+		{
+			"name": "Java service - Techinical Test",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/directors?threshold=2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"directors"
+					],
+					"query": [
+						{
+							"key": "threshold",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/directors?threshold=2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"directors"
+							],
+							"query": [
+								{
+									"key": "threshold",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 09 Dec 2024 15:50:02 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"directors\": [\n        \"Clint Eastwood\",\n        \"M. Night Shyamalan\",\n        \"Martin Scorsese\",\n        \"Pedro Almodóvar\",\n        \"Woody Allen\"\n    ]\n}"
+				},
+				{
+					"name": "Bad Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/directors?threshold=x",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"directors"
+							],
+							"query": [
+								{
+									"key": "threshold",
+									"value": "x"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 09 Dec 2024 15:51:01 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": 400,\n    \"error\": \"Failed to convert value of type 'java.lang.String' to required type 'int'; For input string: \\\"x\\\"\"\n}"
+				}
+			]
+		},
+		{
+			"name": "WireMock - offline",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9090/api/movies/search?page=1",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"movies",
+						"search"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eron Mock",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://eron-movies.wiremockapi.cloud/api/movies/search?page=1",
+					"protocol": "https",
+					"host": [
+						"eron-movies",
+						"wiremockapi",
+						"cloud"
+					],
+					"path": [
+						"api",
+						"movies",
+						"search"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
