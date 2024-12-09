@@ -17,8 +17,8 @@ services:
   retries: 3
   period-retry: 2000
 ```
-### Pruebas unitarias
-![Cobertura de pruebas unitarias del proyecto.](/Unit testing coverage.png)
+### Pruebas unitarias<br><br>
+![Cobertura de pruebas unitarias del proyecto.](/UnitTestingCoverage.png)
 
 ### Levantar la aplicación en Docker
 La aplicación se puede levantar en un contendor docker, para esto es necesario generar el jar con el siguiente comando en la raiz del proyecto:
@@ -75,5 +75,5 @@ para que tome los cambios.
 La colección cuenta con 3 request:
 - **Java service - Techinical Test:** Request al endpoint del proyecto
 - **WireMock - offline:** Request al Mock local
-- **Eron Mock:**: Request al Mock de Eron
+- **Eron Mock:**: Request al Mock de Eron<br><br>
 ![Colección Postman.](/Postman.png)
