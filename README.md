@@ -42,6 +42,8 @@ Para acceder a la consola de Swagger mediante la siguiente url:
 ```
 http://localhost:8080/swagger-ui/index.html
 ```
+<br><br>
+![Swagger.](/Swagger.png)
 ### Wiremock
 En caso de ser necesario tener un mock que reemplace eron-movies, se puede levantar un mock local que puede reemplazarlo.
 Desde la carpeta raiz del proyecto acceder a la carpeta /WireMock y desde ahí ejecutar el siguiente comando, esto levantara el mock en el puerto 9090:
