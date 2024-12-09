@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: MovieDirectors
+services:
+  retries: 3
+  period-retry: 2000
+  directors:
+    url: 'http://localhost:9090/api/movies/search?page=%s'
