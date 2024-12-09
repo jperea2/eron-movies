@@ -1,57 +1,57 @@
 # Directa24 Back-End Developer Challenge 
 ## Solution
-### Elementos incluidos:
-- **Desarrollo de la actividad usando WebFlux**
-- **Esquema de Reintentos usando spring-retry** La aplicación es capas de reintentar la invocación del mock de eron-movies en caso de fallo para cada una de las paginas.
-- **Pruebas unitarias** Cuenta con pruebas unitarias con cobertura del 80.2%
-- **Docker** La aplicación posee Dockerfile para levantar a aplicación dentro de un contenedor
+### Items included:
+- **Development of the activity using WebFlux**
+- **Retry Scheme using spring-retry** The application is able to retry the invocation of the eron-movies mock in case of failure for each of the pages.
+- **Unit tests** It has unit tests with coverage of 80.2%
+- **Docker** The application has a Dockerfile to build the application inside a container
 - **Swagger**
-- **Actuator** Configuración basica de Actuator.
-- **Wiremock** En caso de no tener acceso al Mock de eron-movies, tengo mi propio mock del servicio para uso de manera local en caso de estar fuera de linea.
-- **Postman** Colección Postman de la aplicación
+- **Actuator** Basic configuration of Actuator.
+- **Wiremock** In case I don't have access to the eron-movies Mock, I have my own mock of the service to use locally in case I am offline.
+- **Postman** Postman App Collection
 
-### Configuración de Reintentos
-En el archivo de application yml se encuentra la configuración del numero de reintentos y el tiempo en milisegundos entre reintentos en caso de fallo para el consumo del mock de eron
+### Retry Settings
+In the application yml file you will find the configuration of the number of retries and the time in milliseconds between retries in case of failure for the consumption of the eron mock
 ```
 services:
   retries: 3
   period-retry: 2000
 ```
-### Pruebas unitarias<br><br>
-![Cobertura de pruebas unitarias del proyecto.](/UnitTestingCoverage.png)
+### Unit tests<br><br>
+![Project unit test coverage](/UnitTestingCoverage.png)
 
-### Levantar la aplicación en Docker
-La aplicación se puede levantar en un contendor docker, para esto es necesario generar el jar con el siguiente comando en la raiz del proyecto:
+### Lift the application in Docker
+The application can be built in a docker container, for this it is necessary to generate the jar with the following command in the root of the project:
 ```
 mvn clean install
 ```
-Construir la imagen con el comando a partir del Dockerfile
+Build image with command from Dockerfile
 ```
 docker build -t movie-directors .
 ```
-Iniciar un contenedor. 
-La aplicación posee 2 perfile:
-- **dev:** Le apunta al mock de eron
-- **local:** Le apunta al mock local de Wiremock
-La variable de entorno SPRING_PROFILES_ACTIVE podra ser configurada con cualquiera de estos 2 perfiles dependiendo sus necesidades
+Start a container. 
+The application has 2 profiles:
+- **dev:** Endpoint to eron's mock
+- **local:** Endpoint to the local Wiremock mock
+The SPRING_PROFILES_ACTIVE environment variable could be configured with any of these 2 profiles depending on your needs.
 ```
 docker run --name movie-directors -e "SPRING_PROFILES_ACTIVE=dev" -p 8080:8080 --network=host -t movie-directors
 ```
 ### Swagger
-Para acceder a la consola de Swagger mediante la siguiente url:
+To access the Swagger console using the following url:
 ```
 http://localhost:8080/swagger-ui/index.html
 ```
 <br><br>
 ![Swagger.](/Swagger.png)
-### Wiremock
-En caso de ser necesario tener un mock que reemplace eron-movies, se puede levantar un mock local que puede reemplazarlo.
-Desde la carpeta raiz del proyecto acceder a la carpeta /WireMock y desde ahí ejecutar el siguiente comando, esto levantara el mock en el puerto 9090:
+###Wiremock
+If it's necessary to have a mock that replaces eron-movies, a local mock can be created that can replace it.
+From the root folder of the project, access the /WireMock folder and from there execute the following command, this will raise the mock on port 9090:
 ```
 java -jar wiremock-standalone-3.9.1.jar --verbose --port 9090
 ```
-En caso de querer realizar algun ajuste al mock se puede acceder al archivo /WireMock/mappings/eron-pages.json donde encontrara un codigo similar a este en el cual podrá realizar sus respectivos ajustes. Luego debera detener y volver a ejecuar **java -jar wiremock-standalone-3.9.1.jar --verbose --port 9090**
-para que tome los cambios.
+If you want to make any adjustments to the mock, you can access the file /WireMock/mappings/eron-pages.json where you will find a code similar to this one in which you can make your respective adjustments. Then you should stop and run again **java -jar wiremock-standalone-3.9.1.jar --verbose --port 9090**
+to make the changes.
 ```
 {
     "mappings": [{
@@ -74,8 +74,8 @@ para que tome los cambios.
         },
 ```
 ### Postman
-La colección cuenta con 3 request:
-- **Java service - Techinical Test:** Request al endpoint del proyecto
-- **WireMock - offline:** Request al Mock local
-- **Eron Mock:**: Request al Mock de Eron<br><br>
+The collection has 3 requests:
+- **Java service - Technical Test:** Request to the project endpoint
+- **WireMock - offline:** Request to local Mock
+- **Eron Mock:**: Request for Eron Mock<br><br>
 ![Colección Postman.](/Postman.png)
